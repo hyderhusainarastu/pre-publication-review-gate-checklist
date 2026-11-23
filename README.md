@@ -55,26 +55,37 @@ scholarly-research product's public campaign, and that flavor survives
 in the worked example below, but the checklist categories apply just as
 well to a SaaS product, a mobile app, or a nonprofit campaign.
 
+## Works with
+
+| Surface | How | Status |
+|---|---|---|
+| Claude Code | native skill (`SKILL.md`) | not tested |
+| Codex | native skill via `.agents/skills` | not tested |
+| Gemini CLI | native skill via `.agents/skills`, `GEMINI.md` pointer | not tested |
+| Cursor | native skill via `.agents/skills`, `AGENTS.md` | not tested |
+| GitHub Copilot | `.github/copilot-instructions.md` pointer | not tested |
+| ChatGPT, Claude.ai, Gemini (chat) | paste `PROMPT.md` | not tested |
+
+The installer script itself is tested offline by `test_install.sh`.
+
 ## Installation
 
-This is an **Agent Skill**: a portable folder following the `SKILL.md`
-convention (YAML frontmatter with `name` and `description`, plus a
-self-contained instructions body). To use it:
+This is an Agent Skill: a folder with a `SKILL.md` (`name` and `description` frontmatter plus instructions). Run `./install.sh` with no flags to see the options and detected tools.
 
-- **Claude Code:** copy this folder into
-  `.claude/skills/pre-publication-review-gate-checklist/` in your
-  project (or your user-level skills directory to make it available
-  across projects).
-- **Any other agent runtime that supports the `SKILL.md` convention:**
-  copy this folder into that runtime's equivalent skills directory. No
-  build step and no bundled script are required — the whole skill is
-  `SKILL.md` plus the reference templates and worked examples.
+| Surface | Command |
+|---|---|
+| Claude Code (user) | `./install.sh --claude` |
+| Claude Code (project) | `./install.sh --claude --project DIR` |
+| Codex, Cursor, Gemini CLI (project) | `./install.sh --agents --project DIR` |
+| Codex, Cursor, Gemini CLI (user) | `./install.sh --agents --user` |
+| Gemini CLI pointer | `./install.sh --gemini --project DIR` |
+| Cursor pointer | `./install.sh --cursor --project DIR` |
+| Copilot pointer | `./install.sh --copilot --project DIR` |
+| ChatGPT, Claude.ai, Gemini chat | paste `PROMPT.md` |
 
-Once installed, an agent should invoke the skill whenever it is about to
-prepare, populate, review, or approve the launch of public-facing
-material — especially material containing demo/example data,
-third-party endorsement claims, accessibility-relevant UI, or
-commercial terms.
+Add `--copy` to copy instead of symlink, `--dry-run` to preview and `--uninstall` to remove. The installer only touches paths it owns.
+
+Once installed, an agent should invoke the skill whenever it is about to prepare, review or approve the launch of public-facing material, especially material containing demo data, third-party endorsement claims, accessibility-relevant UI or commercial terms.
 
 ## Worked example (synthetic data)
 
@@ -100,3 +111,18 @@ step-by-step procedure.
 ## License
 
 MIT — see `LICENSE`.
+
+## Limits
+
+- The skill guides a review; it does not replace a legal, accessibility or security audit.
+- It cannot verify evidence. A human reviewer must confirm each item.
+- Examples use a fictional product.
+
+## Related
+
+- [launch-campaign-scaffold-kit](https://github.com/hyderhusainarastu/launch-campaign-scaffold-kit): folder scaffold and default-deny ledgers for launches.
+- [release-privacy-scanner](https://github.com/hyderhusainarastu/release-privacy-scanner): scan a release for secrets and local paths before publishing.
+
+Keywords: pre-launch checklist, release checklist, content review, review gate, claim accuracy, accessibility review, privacy review, synthetic data disclosure.
+
+Part of palimnote-skills - more at https://github.com/hyderhusainarastu

@@ -1,6 +1,6 @@
 ---
 name: pre-publication-review-gate-checklist
-description: "A pre-launch review gate for public-facing content: claim accuracy, accessibility, privacy, copyright, content integrity, commercial-terms, and synthetic/placeholder demonstration-data disclosure and replacement, built around a PENDING status that blocks publication until a named accountable owner explicitly signs off. Invoke this skill whenever an agent is about to prepare, populate, review, or approve the launch of any public-facing material — a marketing or campaign site, a product landing page, an app listing, demo screenshots, promotional copy — especially when that material contains example/demo data, third-party endorsement claims, accessibility-relevant UI, or financial/commercial terms."
+description: "Pre-launch review gate for public-facing content: claims, accessibility, privacy, copyright, commercial terms and synthetic demo-data disclosure. PENDING blocks publishing until a named owner signs off. Use before preparing, reviewing or approving any launch material."
 ---
 
 # Pre-publication review gate checklist
